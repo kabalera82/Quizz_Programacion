@@ -1,34 +1,77 @@
-# Compiled class files
+# ======================================
+# Java / Build
+# ======================================
 *.class
 
-# Log files
-*.log
-
-# BlueJ
-*.ctxt
-
-# J2ME
-.mtj.tmp/
-
-# Build / Distribution packages
+# Packaged files
 *.jar
 *.war
 *.nar
 *.ear
+
+# Compressed archives
 *.zip
 *.tar.gz
 *.rar
 
-# JVM crash logs
+# Output / build dirs
+/out/
+/target/
+/build/
+/bin/
+/dist/
+
+# ======================================
+# IDEs
+# ======================================
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# NetBeans
+nbproject/
+nbbuild/
+dist/
+nblib/
+.nb-gradle/
+
+# VSCode (solo por si alguien abre el repo con él)
+.vscode/
+
+# ======================================
+# Logs / JVM
+# ======================================
+*.log
 hs_err_pid*
 replay_pid*
 
-# Maven / Gradle / Build system
-target/
+# ======================================
+# Gradle
+# ======================================
+.gradle/
 build/
-out/
 
-# OS files
+# ======================================
+# Maven
+# ======================================
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+
+# ======================================
+# J2ME (legacy)
+# ======================================
+.mtj.tmp/
+
+# ======================================
+# OS generated files
+# ======================================
 .DS_Store
 Thumbs.db
-*.iml
+ehthumbs.db
+Icon?
+desktop.ini
