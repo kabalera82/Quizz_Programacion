@@ -3914,7 +3914,7 @@
     </question>
     <question id="304">
         <enunciado>¿Cuál es la salida del siguiente código recursivo al ser llamado con metodoRecursivo(4)?
-            public class Main {
+            public class dam.primerCurso.ui.Main {
             public static void main(String[] args) {
             System.out.println(metodoRecursivo(4));
             }
@@ -3940,7 +3940,7 @@
     </question>
     <question id="305">
         <enunciado>¿Cuál es la salida del siguiente código?
-            public class Main {
+            public class dam.primerCurso.ui.Main {
             public static void main(String[] args) {
             int x = 5;
             int y = 10;
@@ -4066,7 +4066,7 @@
     </question>
     <question id="312">
         <enunciado>¿Qué imprime el siguiente código?
-            public class Main {
+            public class dam.primerCurso.ui.Main {
             public static void main(String[] args) {
             String s = "hello";
             String t = "world";
@@ -4442,7 +4442,7 @@
     <question id="332">
         <enunciado>¿Qué se imprime?</enunciado>
         <codigo>
-            public class Main {
+            public class dam.primerCurso.ui.Main {
             public static void main(String[] args) {
             String texto = "Hola Mundo";
             System.out.println(texto.substring(5));

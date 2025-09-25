@@ -1,51 +1,45 @@
 package dam.primerCurso.service;
 
-/** imports*/
 import dam.primerCurso.domain.Question;
-
 import java.util.List;
 
 /**
- * The {@code AppEngine} class manages the flow and state of the quiz game.
- * <p>
- * It stores the collection of questions, tracks correct and incorrect answers,
- * calculates the total score, and provides access to game statistics.
- * </p>
- * <p>
- * Scoring rules:
- * </p>
+ * The {@code AppEngine} class manages the state of a quiz session.
+ *
+ * <p>Responsibilities include:</p>
  * <ul>
- *   <li>+1 point for a correct answer</li>
- *   <li>-0.33 points for an incorrect answer</li>
+ *     <li>Tracking correct and incorrect answers</li>
+ *     <li>Maintaining the total score (with penalties)</li>
+ *     <li>Providing statistics such as number of successes, failures, and final score</li>
  * </ul>
+ *
+ * <p>This class belongs to the <b>Service Layer</b>, because it implements
+ * the core game logic independently of the UI or data sources.</p>
  *
  * @author kabalera82
  * @version 1.0
  */
 public class AppEngine {
 
-    /** List of {@link Question} objects representing all questions. */
-    private List<Question> questions;
+    /** List of all questions in the current quiz session. */
+    private final List<Question> questions;
 
-    /** Correctly answered questions. */
+    /** Number of correctly answered questions. */
     private int successes;
 
-    /** Incorrectly answered questions. */
+    /** Number of incorrectly answered questions. */
     private int failures;
 
-    /** Total number of questions. */
+    /** Total number of questions in the session. */
     private int totalQuestions;
 
-    /** Current game score. */
+    /** Final score (with penalties for wrong answers). */
     private double gameScore;
 
     /**
-     * Creates a new {@code AppEngine} instance with the provided list of questions.
-     * <p>
-     * Initializes counters and calculates the total number of questions.
-     * </p>
+     * Creates a new {@code AppEngine} for the given set of questions.
      *
-     * @param questions list of {@link Question} objects to be used in the game
+     * @param questions the list of {@link Question} objects for the session
      */
     public AppEngine(List<Question> questions) {
         this.questions = questions;
@@ -56,18 +50,17 @@ public class AppEngine {
     }
 
     /**
-     * Updates the game statistics based on whether the player's answer was correct.
-     * <ul>
-     *   <li>If correct: increments {@code successes} and adds 1 point to {@code gameScore}.</li>
-     *   <li>If incorrect: increments {@code failures} and subtracts 0.33 points from {@code gameScore}.</li>
-     * </ul>
+     * Updates the quiz statistics based on the correctness of a response.
+     *
+     * <p>If the response is correct: +1 point.
+     * If incorrect: -0.33 penalty.</p>
      *
      * @param isCorrect {@code true} if the answer is correct, {@code false} otherwise
      */
     public void controlResponse(boolean isCorrect) {
         if (isCorrect) {
             successes++;
-            gameScore += 1;
+            gameScore += 1.0;
         } else {
             failures++;
             gameScore -= 0.33;
@@ -75,14 +68,7 @@ public class AppEngine {
     }
 
     /**
-     * <p>AppEngine represents the game engine, and only it decides how the counters change.</p>
-     * <p>Therefore, getters are exposed (so that other layers, such as the graphical interface,
-     * can display scores or successes).</p>
-     * <p>However, there are no setters, because that would compromise the consistency of the rules.</p>
-     */
-
-    /**
-     * Returns the total number of questions in the game session.
+     * Gets the total number of questions in the session.
      *
      * @return total number of questions
      */
@@ -91,36 +77,36 @@ public class AppEngine {
     }
 
     /**
-     * Returns the number of correctly answered questions.
+     * Gets the number of correctly answered questions.
      *
-     * @return number of correct answers
+     * @return number of successes
      */
     public int getSuccesses() {
         return successes;
     }
 
     /**
-     * Returns the number of incorrectly answered questions.
+     * Gets the number of incorrectly answered questions.
      *
-     * @return number of incorrect answers
+     * @return number of failures
      */
     public int getFailures() {
         return failures;
     }
 
     /**
-     * Returns the current score of the player.
+     * Gets the final score of the session.
      *
-     * @return current game score
+     * @return score (positive with correct answers, negative if too many penalties)
      */
     public double getGameScore() {
         return gameScore;
     }
 
     /**
-     * Returns the list of questions used in the game.
+     * Gets the list of all questions in the session.
      *
-     * @return list of {@link Question} objects
+     * @return list of {@link Question}
      */
     public List<Question> getQuestions() {
         return questions;
